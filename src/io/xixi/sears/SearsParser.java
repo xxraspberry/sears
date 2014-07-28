@@ -21,7 +21,7 @@ public class SearsParser {
 
 	private final static String URL_PREFIX = "http://www.sears.com/search=";
 	private final static int FETCH_TIMEOUT_MILLIS = 20000;  // 20sec
-	private final static int ITEMS_PER_PAGE = 50;  // seems to be Sears' default
+	private final static int ITEMS_PER_PAGE = 25;  // seems to be Sears' default
 	private Document doc = null;
 
 
@@ -61,12 +61,12 @@ public class SearsParser {
 		if (this.doc == null) {
 			throw new Exception("Result page is not ready.");
 		}
-		if (this.doc.select("#noResults") != null) {
+		if (!this.doc.select("#noResults").isEmpty()) {
 			return "0";
 		}
 		Element total = this.doc.select(".tab-filters-count").first();
 		if (total != null) {
-			return total.text().replace("(", "").replace(")", "");
+			return total.text().trim().replace("(", "").replace(")", "");
 		}
 		throw new Exception("[Failed to parse result count; missing .tab-filters-count in DOM.]");
 	}
