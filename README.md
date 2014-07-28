@@ -19,5 +19,7 @@ To run:
 
 I used Chrome's Inspect Element to empirically figure out the page structure.
 
-Caveat: sears.com may change it's page structure any time. I'm not
-watching it closely to keep this repo up to date.
+Caveats: 
+
+1. sears.com may change it's page structure any time. I'm not watching it closely to keep this repo up to date.
+2. Some keywords (e.g., "digital camera" and "book") seem to be blocked by the site.
